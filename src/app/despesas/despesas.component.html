@@ -1,0 +1,27 @@
+<div>
+    <h2>Adicionar Despesa</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" [(ngModel)]="descricao" name="descricao" required>
+      
+      <label for="valor">Valor:</label>
+      <input type="number" id="valor" [(ngModel)]="valor" name="valor" required>
+      
+      <label for="data">Data:</label>
+      <input type="date" id="data" [(ngModel)]="data" name="data" required>
+      
+      <button type="submit">Adicionar</button>
+    </form>
+  </div>
+  
+  <div>
+    <h2>Lista de Despesas</h2>
+    <ul>
+      <li *ngFor="let despesa of despesas">
+        {{ despesa.descricao }} - {{ despesa.valor | currency }} - <p>{{ '2024-11-16T12:00:00Z' }}</p>
+
+        <button (click)="removerDespesa(despesa.id)">Remover</button>
+      </li>
+    </ul>
+  </div>
+  
