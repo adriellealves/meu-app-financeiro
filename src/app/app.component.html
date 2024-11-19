@@ -1,5 +1,28 @@
-<nav>
-    <a routerLink="/despesas">Despesas</a>
-  </nav>
-
-  
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon>home</mat-icon>
+        <a matLine routerLink="/">Home</a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>list</mat-icon>
+        <a matLine routerLink="/despesas">Despesas</a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>attach_money</mat-icon>
+        <a matLine routerLink="/receitas">Receitas</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Meu App Financeiro</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

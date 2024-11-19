@@ -5,16 +5,13 @@ import { Despesa } from './despesa.model';
   providedIn: 'root'
 })
 export class DespesaService {
-  private despesas: Despesa[] = [
-    new Despesa(1, 'Compra de alimentos', 150.5, new Date('2024-11-01')),
-    new Despesa(2, 'Gasolina', 80, new Date('2024-11-10'))
-  ];
+  private despesas: Despesa[] = [];
 
   adicionarDespesa(despesa: Despesa) {
     this.despesas.push(despesa);
   }
 
-  obterDespesas() {
+  obterDespesas(): Despesa[] {
     return this.despesas;
   }
 

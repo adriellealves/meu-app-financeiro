@@ -1,4 +1,4 @@
-export class Despesa {
+export class Receita {
     constructor(
       public id: number,
       public descricao: string,
