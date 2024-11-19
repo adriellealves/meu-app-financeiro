@@ -22,7 +22,15 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     FormGroup,
     FormBuilder,
-    Inject
+    Inject,
+    BrowserModule,
+    CommonModule,
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule,
+    RouterModule.forRoot([]),
+    ReactiveFormsModule,
+
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

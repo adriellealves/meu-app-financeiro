@@ -4,9 +4,10 @@ import { Despesa } from './despesa.model';
 import { Pipe, PipeTransform } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
-  selector: 'app-despesas',
-  templateUrl: './despesas.component.html',
-  styleUrls: ['./despesas.component.css']
+    selector: 'app-despesas',
+    templateUrl: './despesas.component.html',
+    styleUrls: ['./despesas.component.css'],
+    standalone: false
 })
 export class DespesasComponent {
   descricao!: string;
