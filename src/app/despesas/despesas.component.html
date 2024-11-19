@@ -13,8 +13,22 @@
       <button type="submit">Adicionar</button>
     </form>
   </div>
-  
+
   <div>
+    <p>Data: {{ '2024-11-16T12:00:00Z' | date:'shortDate' }}</p>
+    <p>Valor: {{ 100 | currency }}</p>
+  </div>
+<div>
+  <h2>Lista de Despesas</h2>
+  <ul>
+    <li *ngFor="let despesa of despesas">
+      {{ despesa.descricao }} - {{ despesa.valor | currency }} - {{ despesa.data | date:'shortDate' }}
+      <button (click)="removerDespesa(despesa.id)">Remover</button>
+    </li>
+  </ul>
+</div>
+  
+  <!-- <div>
     <h2>Lista de Despesas</h2>
     <ul>
       <li *ngFor="let despesa of despesas">
@@ -23,5 +37,5 @@
         <button (click)="removerDespesa(despesa.id)">Remover</button>
       </li>
     </ul>
-  </div>
+  </div> -->
   

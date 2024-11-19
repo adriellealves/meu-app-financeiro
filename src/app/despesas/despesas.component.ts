@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DespesaService } from './despesa.service';
 import { Despesa } from './despesa.model';
+import { Pipe, PipeTransform } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-despesas',
@@ -15,7 +16,11 @@ export class DespesasComponent {
   constructor(
     private despesaService: DespesaService
   ) {}
-  get despesas() { return this.despesaService.obterDespesas(); }
+  get despesas() { 
+    const despesas = this.despesaService.obterDespesas();
+    console.log('Despesas:', despesas);
+    return despesas;
+   }
 
   onSubmit() {
     const novaDespesa = new Despesa(
