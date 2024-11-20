@@ -1,0 +1,50 @@
+<p>home works!</p>
+<mat-toolbar color="primary">
+    <span>Controle Financeiro</span>
+  </mat-toolbar>
+  
+  <div class="container">
+    <div class="saldo">
+      <mat-card>
+        <mat-card-title>Resumo dos Saldos</mat-card-title>
+        <mat-card-content>
+          <p>Receitas Totais: {{ receitasTotais | currency:'BRL' }}</p>
+          <p>Despesas Totais: {{ despesasTotais | currency:'BRL' }}</p>
+          <p>Saldo Líquido: {{ saldoLiquido | currency:'BRL' }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="graficos">
+      <mat-card>
+        <mat-card-title>Gráficos e Relatórios</mat-card-title>
+        <mat-card-content>
+          <canvas id="graficoReceitasDespesas"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="links-rapidos">
+      <mat-card>
+        <mat-card-title>Links Rápidos</mat-card-title>
+        <mat-card-content>
+          <button mat-raised-button color="primary" routerLink="/receitas">Adicionar Receita</button>
+          <button mat-raised-button color="warn" routerLink="/despesas">Adicionar Despesa</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- <div class="ultimas-transacoes">
+      <mat-card>
+        <mat-card-title>Últimas Transações</mat-card-title>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let transacao of ultimasTransacoes">
+              {{ transacao.descricao }} - {{ transacao.valor | currency:'BRL' }} - {{ transacao.data | date:'shortDate' }}
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div> -->
+  </div>
+  

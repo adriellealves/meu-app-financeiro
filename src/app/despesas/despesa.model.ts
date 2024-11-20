@@ -3,7 +3,8 @@ export class Despesa {
       public id: number,
       public descricao: string,
       public valor: number,
-      public data: Date
+      public dataFeita: Date,
+      public dataPaga: Date
     ) {}
   }
   

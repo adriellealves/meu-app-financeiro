@@ -20,4 +20,10 @@ describe('DespesasComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('deve adicionar uma despesa', () => {
+    component.descricao = 'Teste';
+    component.valor = 100;
+    component.onSubmit();
+    expect(component.despesas.length).toBe(1);
+  })
 });

@@ -13,20 +13,21 @@
       
       <mat-form-field appearance="fill">
         <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="data" name="data" required>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dataFeita" name="data" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       
-      <button mat-raised-button color="primary" type="submit">Adicionar</button>
+      <button mat-raised-button color="primary" type="submit">{{ editMode ? 'Salvar' : 'Adicionar' }}</button>
     </form>
   </div>
   
   <div>
     <h2>Lista de Despesas</h2>
     <ul>
-      <li *ngFor="let despesa of despesas">
-        {{ despesa.descricao }} - {{ despesa.valor | currency:'BRL':'symbol':'1.2-2' }} - {{ formatarData(despesa.data) }}
+      <li *ngFor="let despesa of despesas | async">
+        {{ despesa.descricao }} - {{ despesa.valor | currency:'BRL':'symbol':'1.2-2' }} - {{ formatarData(despesa.dataFeita) }}
+        <button mat-raised-button color="accent" (click)="editarDespesa(despesa)">Editar</button>
         <button mat-raised-button color="warn" (click)="removerDespesa(despesa.id)">Remover</button>
       </li>
     </ul>

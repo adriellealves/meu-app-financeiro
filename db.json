@@ -1,0 +1,85 @@
+{
+  "despesas": [
+    {
+      "id": "1",
+      "descricao": "Compra de supermercado",
+      "valor": 150.5,
+      "dataFeita": "2024-11-16T00:00:00",
+      "dataPaga": "2024-11-17T00:00:00"
+    },
+    {
+      "id": "2",
+      "descricao": "Pagamento de aluguel",
+      "valor": 1200,
+      "dataFeita": "2024-11-01T00:00:00",
+      "dataPaga": "2024-11-03T00:00:00"
+    },
+    {
+      "id": "3",
+      "descricao": "Mensalidade da academia",
+      "valor": 75,
+      "dataFeita": "2024-11-10T00:00:00",
+      "dataPaga": "2024-11-12T00:00:00"
+    },
+    {
+      "id": "4",
+      "descricao": "Conta de luz",
+      "valor": 200.45,
+      "dataFeita": "2024-11-05T00:00:00",
+      "dataPaga": "2024-11-07T00:00:00"
+    },
+    {
+      "id": "5",
+      "descricao": "Transporte",
+      "valor": 50,
+      "dataFeita": "2024-11-12T00:00:00",
+      "dataPaga": "2024-11-13T00:00:00"
+    },
+    {
+      "id": 0.9727877498425013,
+      "descricao": "teste",
+      "valor": 6,
+      "dataFeita": "2024-11-30T03:00:00.000Z",
+      "dataPaga": null
+    },
+    {
+      "id": 0.6461461734951603,
+      "descricao": "ifood",
+      "valor": 32,
+      "dataFeita": "2024-11-04T03:00:00.000Z",
+      "dataPaga": null
+    }
+  ],
+  "receitas": [
+    {
+      "id": 1,
+      "descricao": "Salário",
+      "valor": 5000.00,
+      "dataRecebimento": "2024-11-05T00:00:00"
+    },
+    {
+      "id": 2,
+      "descricao": "Freelance de projeto de web design",
+      "valor": 1500.00,
+      "dataRecebimento": "2024-11-10T00:00:00"
+    },
+    {
+      "id": 3,
+      "descricao": "Venda de produtos artesanais",
+      "valor": 300.00,
+      "dataRecebimento": "2024-11-15T00:00:00"
+    },
+    {
+      "id": 4,
+      "descricao": "Reembolso de despesas",
+      "valor": 200.00,
+      "dataRecebimento": "2024-11-20T00:00:00"
+    },
+    {
+      "id": 5,
+      "descricao": "Aluguel de imóvel",
+      "valor": 2500.00,
+      "dataRecebimento": "2024-11-25T00:00:00"
+    }
+  ]
+}
