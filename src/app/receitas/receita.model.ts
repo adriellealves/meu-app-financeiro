@@ -3,7 +3,7 @@ export class Receita {
       public id: number,
       public descricao: string,
       public valor: number,
-      public data: Date
+      public dataVencimento: Date
     ) {}
   }
   

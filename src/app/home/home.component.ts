@@ -17,7 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [   
+  imports: [
     CommonModule,
     FormsModule,
     RouterModule,
@@ -28,7 +28,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatToolbarModule
   ],
-  
+
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -36,53 +36,53 @@ export class HomeComponent implements OnInit {
   receitasTotais: number = 0;
   despesasTotais: number = 0;
   saldoLiquido: number = 0;
-  ultimasTransacoes: (Receita | Despesa)[] = [];
+  ultimasTransacoes: (Receita | Despesa )[] = [];
 
   constructor(
     private receitaService: ReceitaService,
     private despesaService: DespesaService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.carregarDados();
-    this.inicializarGraficos();
   }
 
   carregarDados() {
-    // this.receitaService.obterReceitas().subscribe((receitas: Receita[]) => {
-    //   this.receitasTotais = receitas.reduce((acc, receita) => acc + receita.valor, 0);
-    //   this.ultimasTransacoes = [...this.ultimasTransacoes, ...receitas];
-    // });
+    this.receitaService.obterReceitas().subscribe((receitas: Receita[]) => {
+      this.receitasTotais = receitas.reduce((acc, receita) => acc + receita.valor, 0);
+      this.ultimasTransacoes = [...this.ultimasTransacoes, ...receitas];
+    });
 
     this.despesaService.obterDespesas().subscribe((despesas: Despesa[]) => {
       this.despesasTotais = despesas.reduce((acc, despesa) => acc + despesa.valor, 0);
       this.ultimasTransacoes = [...this.ultimasTransacoes, ...despesas];
       this.saldoLiquido = this.receitasTotais - this.despesasTotais;
-     // this.ultimasTransacoes.sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime());
+  
+      this.inicializarGraficos();
+      //this.ultimasTransacoes.sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime());
     });
+  
   }
 
   inicializarGraficos() {
     const ctx = document.getElementById('graficoReceitasDespesas') as HTMLCanvasElement;
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Receitas', 'Despesas'],
-        datasets: [
-          {
-            label: 'Total',
-            data: [this.receitasTotais, this.despesasTotais],
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'bar', data: {
+          labels: ['Receitas', 'Despesas'], datasets: [{
+            label: 'Total', data: [this.receitasTotais, this.despesasTotais],
             backgroundColor: ['#4CAF50', '#F44336']
-          }
-        ]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
+          }]
+        },
+        options: {
+          responsive: true, scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { precision: 0.1 }
+            }
           }
         }
-      }
-    });
+      });
+    }
   }
 }

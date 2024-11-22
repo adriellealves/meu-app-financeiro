@@ -14,7 +14,7 @@
       
       <mat-form-field appearance="fill">
         <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="data" name="data" required>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dataVencimento" name="data" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -26,8 +26,8 @@
   <div>
     <h2>Lista de Receitas</h2>
     <ul>
-      <li *ngFor="let receita of receitas">
-        {{ receita.descricao }} - {{ receita.valor | currency:'BRL':'symbol':'1.2-2' }} - {{ formatarData(receita.data) }}
+      <li *ngFor="let receita of receitas | async">
+        {{ receita.descricao }} - {{ receita.valor | currency:'BRL':'symbol':'1.2-2' }} - {{ formatarData(receita.dataVencimento) }}
         <button mat-raised-button color="warn" (click)="removerReceita(receita.id)">Remover</button>
       </li>
     </ul>

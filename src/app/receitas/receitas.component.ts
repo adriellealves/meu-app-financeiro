@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReceitaService } from './receita.service';
 import { Receita } from './receita.model';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from '@angular/router';
 import { MatNativeDateModule,DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { APP_DATE_FORMATS, CustomDateAdapter } from '../utils/date-format';
+import { Observable } from 'rxjs';
 
 
 
@@ -35,33 +36,37 @@ import { APP_DATE_FORMATS, CustomDateAdapter } from '../utils/date-format';
   templateUrl: './receitas.component.html',
   styleUrl: './receitas.component.css'
 })
-export class ReceitasComponent {
+export class ReceitasComponent implements OnInit {
   descricao!: string;
   valor!: number;
-  data: Date | null = null;
+  dataVencimento: Date | null = null;
 
+  receitas: Observable<Receita[]> | undefined;
   constructor(
     private receitaService: ReceitaService,
     private datePipe: DatePipe
   ) { }
 
-  get receitas() {
-    return this.receitaService.obterReceitas();
-  }
 
+  ngOnInit(): void {
+    this.receitas = this.receitaService.obterReceitas();
+  }
+ 
   formatarData(data: Date): string { return this.datePipe.transform(data, 'dd/MM/yyyy') || ''; }
 
   onSubmit() {
-    if (this.descricao && this.valor && this.data) {
-      const novaReceita = new Receita(Math.random(), this.descricao, this.valor, this.data);
+    if (this.descricao && this.valor && this.dataVencimento) {
+      const novaReceita = new Receita(Math.random(), this.descricao, this.valor, this.dataVencimento);
       this.receitaService.adicionarReceita(novaReceita);
       this.descricao = '';
       this.valor = 0;
-      this.data = null;
+      this.dataVencimento = null;
     }
   }
 
   removerReceita(id: number) {
-    this.receitaService.removerReceita(id);
+    this.receitaService.removerReceita(id).subscribe(() => {
+      this.receitas = this.receitaService.obterReceitas();
+    })
   }
 }

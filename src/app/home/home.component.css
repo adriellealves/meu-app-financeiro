@@ -21,4 +21,13 @@
   li {
     padding: 5px 0;
   }
+  .grafico {
+    margin: 20px 0;
+  }
+
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
   
